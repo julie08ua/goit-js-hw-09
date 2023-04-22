@@ -31,7 +31,9 @@ flatpickr(datetimePickerEl, options);
 btnStartEl.disabled = true;
 
 btnStartEl.addEventListener('click', () => {
-  
+  btnStartEl.disabled = true;
+  datetimePickerEl.disabled = true;
+
   let timeId = setInterval(() => {
     const currentDate = new Date();
     const currentTimer = convertMs(timerId - currentDate);
@@ -43,6 +45,8 @@ btnStartEl.addEventListener('click', () => {
 
     if (timerId - currentDate < 1000) {
       clearInterval(timeId);
+      btnStartEl.disabled = false;
+      datetimePickerEl.disabled = false;
     }
   }, 1000);
 });
